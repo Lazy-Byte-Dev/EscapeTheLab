@@ -1,0 +1,82 @@
+[gd_resource type="AnimationNodeBlendTree" load_steps=13 format=3 uid="uid://c12ngkuefushs"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_542vn"]
+animation = &"animations/Run"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tn0j2"]
+animation = &"animations/Sprint"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_l3n18"]
+animation = &"Falling"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_r7uxw"]
+animation = &"animations/Hook"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8h44v"]
+animation = &"animations/WideHook"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vbpxk"]
+animation = &"animations/HeavyPunch"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_t17v6"]
+animation = &"animations/WideOutSlash"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4m2yr"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_dpsvu"]
+xfade_time = 0.2
+input_0/name = "Idle"
+input_0/auto_advance = false
+input_0/break_loop_at_end = false
+input_0/reset = true
+input_1/name = "Run"
+input_1/auto_advance = false
+input_1/break_loop_at_end = false
+input_1/reset = true
+input_2/name = "Sprint"
+input_2/auto_advance = false
+input_2/break_loop_at_end = false
+input_2/reset = true
+input_3/name = "Fall"
+input_3/auto_advance = false
+input_3/break_loop_at_end = false
+input_3/reset = true
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_e5uq4"]
+fadein_time = 0.2
+fadeout_time = 0.3
+
+[sub_resource type="AnimationNodeBlend3" id="AnimationNodeBlend3_5xre7"]
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_sg2kq"]
+fadein_time = 0.2
+fadeout_time = 0.3
+
+[resource]
+nodes/Animation/node = SubResource("AnimationNodeAnimation_4m2yr")
+nodes/Animation/position = Vector2(133.333, 106.667)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_542vn")
+"nodes/Animation 2/position" = Vector2(106.667, 240)
+"nodes/Animation 3/node" = SubResource("AnimationNodeAnimation_tn0j2")
+"nodes/Animation 3/position" = Vector2(106.667, 373.333)
+"nodes/Animation 4/node" = SubResource("AnimationNodeAnimation_l3n18")
+"nodes/Animation 4/position" = Vector2(133.333, 506.667)
+"nodes/Animation 5/node" = SubResource("AnimationNodeAnimation_r7uxw")
+"nodes/Animation 5/position" = Vector2(320, 560)
+"nodes/Animation 6/node" = SubResource("AnimationNodeAnimation_8h44v")
+"nodes/Animation 6/position" = Vector2(293.333, 693.333)
+"nodes/Animation 7/node" = SubResource("AnimationNodeAnimation_vbpxk")
+"nodes/Animation 7/position" = Vector2(293.333, 826.667)
+"nodes/Animation 8/node" = SubResource("AnimationNodeAnimation_t17v6")
+"nodes/Animation 8/position" = Vector2(666.667, 826.667)
+nodes/Locomotion/node = SubResource("AnimationNodeTransition_dpsvu")
+nodes/Locomotion/position = Vector2(373.333, 240)
+nodes/Punch/node = SubResource("AnimationNodeOneShot_e5uq4")
+nodes/Punch/position = Vector2(693.333, 426.667)
+nodes/PunchState/node = SubResource("AnimationNodeBlend3_5xre7")
+nodes/PunchState/position = Vector2(533.333, 560)
+nodes/Sword/node = SubResource("AnimationNodeOneShot_sg2kq")
+nodes/Sword/position = Vector2(1013.33, 693.333)
+nodes/output/position = Vector2(1546.67, 400)
+node_connections = [&"Locomotion", 0, &"Animation", &"Locomotion", 1, &"Animation 2", &"Locomotion", 2, &"Animation 3", &"Locomotion", 3, &"Animation 4", &"Punch", 0, &"Locomotion", &"Punch", 1, &"PunchState", &"PunchState", 0, &"Animation 5", &"PunchState", 1, &"Animation 6", &"PunchState", 2, &"Animation 7", &"Sword", 0, &"Punch", &"Sword", 1, &"Animation 8", &"output", 0, &"Sword"]

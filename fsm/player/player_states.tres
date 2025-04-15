@@ -1,0 +1,637 @@
+[gd_resource type="AnimationNodeStateMachine" load_steps=134 format=3 uid="uid://ckac0wcbe3ddj"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_37idv"]
+animation = &"animations/CrouchIdle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_guktx"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_2uamg"]
+states/animations_CrouchIdle/node = SubResource("AnimationNodeAnimation_37idv")
+states/animations_CrouchIdle/position = Vector2(366.667, 98)
+transitions = ["Start", "animations_CrouchIdle", SubResource("AnimationNodeStateMachineTransition_guktx")]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gg2cb"]
+animation = &"animations/ToCrouch"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_b7n20"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lj81h"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_1pkrc"]
+states/animations_ToCrouch/node = SubResource("AnimationNodeAnimation_gg2cb")
+states/animations_ToCrouch/position = Vector2(348, 96.6667)
+transitions = ["Start", "animations_ToCrouch", SubResource("AnimationNodeStateMachineTransition_b7n20"), "animations_ToCrouch", "End", SubResource("AnimationNodeStateMachineTransition_lj81h")]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_e2ekh"]
+animation = &"animations/ToStand"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_efkrp"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3uxwf"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_bm0er"]
+states/animations_ToStand/node = SubResource("AnimationNodeAnimation_e2ekh")
+states/animations_ToStand/position = Vector2(361.333, 98)
+transitions = ["Start", "animations_ToStand", SubResource("AnimationNodeStateMachineTransition_efkrp"), "animations_ToStand", "End", SubResource("AnimationNodeStateMachineTransition_3uxwf")]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pywph"]
+advance_mode = 2
+advance_condition = &"crouch"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_snk54"]
+advance_mode = 2
+advance_condition = &"tostand"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8mcf7"]
+xfade_time = 0.3
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_t1p86"]
+advance_mode = 2
+advance_condition = &"backtocrouch"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_forbm"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_bbjng"]
+states/Crouch/node = SubResource("AnimationNodeStateMachine_2uamg")
+states/Crouch/position = Vector2(508, 98)
+states/Start/position = Vector2(345.778, 207.111)
+states/ToCrouch/node = SubResource("AnimationNodeStateMachine_1pkrc")
+states/ToCrouch/position = Vector2(345.333, 98)
+states/ToStand/node = SubResource("AnimationNodeStateMachine_bm0er")
+states/ToStand/position = Vector2(690.667, 96.6667)
+transitions = ["Start", "ToCrouch", SubResource("AnimationNodeStateMachineTransition_pywph"), "Crouch", "ToStand", SubResource("AnimationNodeStateMachineTransition_snk54"), "ToCrouch", "Crouch", SubResource("AnimationNodeStateMachineTransition_8mcf7"), "Start", "Crouch", SubResource("AnimationNodeStateMachineTransition_t1p86"), "ToStand", "End", SubResource("AnimationNodeStateMachineTransition_forbm")]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hyf7k"]
+animation = &"animations/CrouchWalk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_slx5j"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kpqiq"]
+advance_mode = 2
+advance_condition = &"backtocrouch"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_jy338"]
+states/animations_CrouchWalk/node = SubResource("AnimationNodeAnimation_hyf7k")
+states/animations_CrouchWalk/position = Vector2(374.333, 97.3333)
+transitions = ["Start", "animations_CrouchWalk", SubResource("AnimationNodeStateMachineTransition_slx5j"), "animations_CrouchWalk", "End", SubResource("AnimationNodeStateMachineTransition_kpqiq")]
+graph_offset = Vector2(-63, -50)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gh5ef"]
+animation = &"animations/Falling"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bdg51"]
+animation = &"animations/HardLand"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4gl0i"]
+animation = &"animations/Land"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_w73is"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5x21d"]
+advance_mode = 2
+advance_condition = &"land"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kueg4"]
+advance_mode = 2
+advance_condition = &"hardland"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kc8ga"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5w232"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_r5n52"]
+states/animations_Falling/node = SubResource("AnimationNodeAnimation_gh5ef")
+states/animations_Falling/position = Vector2(400, 99.7778)
+states/animations_HardLand/node = SubResource("AnimationNodeAnimation_bdg51")
+states/animations_HardLand/position = Vector2(639.704, 170)
+states/animations_Land/node = SubResource("AnimationNodeAnimation_4gl0i")
+states/animations_Land/position = Vector2(639.111, 62)
+transitions = ["Start", "animations_Falling", SubResource("AnimationNodeStateMachineTransition_w73is"), "animations_Falling", "animations_Land", SubResource("AnimationNodeStateMachineTransition_5x21d"), "animations_Falling", "animations_HardLand", SubResource("AnimationNodeStateMachineTransition_kueg4"), "animations_Land", "End", SubResource("AnimationNodeStateMachineTransition_kc8ga"), "animations_HardLand", "End", SubResource("AnimationNodeStateMachineTransition_5w232")]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wy2qo"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qywh2"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_l3hcm"]
+advance_mode = 2
+advance_condition = &"idleend"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_dcelk"]
+states/Idle/node = SubResource("AnimationNodeAnimation_wy2qo")
+states/Idle/position = Vector2(322.667, 99.3333)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_qywh2"), "Idle", "End", SubResource("AnimationNodeStateMachineTransition_l3hcm")]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_o62ck"]
+animation = &"Jump"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rwvxd"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yhtjl"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_f5cxl"]
+states/End/position = Vector2(897.333, 100)
+states/Jump/node = SubResource("AnimationNodeAnimation_o62ck")
+states/Jump/position = Vector2(342.667, 94)
+transitions = ["Start", "Jump", SubResource("AnimationNodeStateMachineTransition_rwvxd"), "Jump", "End", SubResource("AnimationNodeStateMachineTransition_yhtjl")]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_u3h8l"]
+animation = &"animations/SprintJump"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yhvmf"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_t3j2f"]
+states/animations_SprintJump/node = SubResource("AnimationNodeAnimation_u3h8l")
+states/animations_SprintJump/position = Vector2(405.333, 98.8889)
+transitions = ["Start", "animations_SprintJump", SubResource("AnimationNodeStateMachineTransition_yhvmf")]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_l8fxi"]
+animation = &"animations/Run"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mm6n7"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_mhu2s"]
+states/animations_Run/node = SubResource("AnimationNodeAnimation_l8fxi")
+states/animations_Run/position = Vector2(312, 100.667)
+transitions = ["Start", "animations_Run", SubResource("AnimationNodeStateMachineTransition_mm6n7")]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xqwhn"]
+animation = &"animations/Sprint"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xakwc"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_y0smj"]
+states/animations_Sprint/node = SubResource("AnimationNodeAnimation_xqwhn")
+states/animations_Sprint/position = Vector2(354.667, 96.6667)
+transitions = ["Start", "animations_Sprint", SubResource("AnimationNodeStateMachineTransition_xakwc")]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rx7ql"]
+animation = &"animations/Walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_chlfp"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_2l2n4"]
+states/animations_Walk/node = SubResource("AnimationNodeAnimation_rx7ql")
+states/animations_Walk/position = Vector2(322.667, 98)
+transitions = ["Start", "animations_Walk", SubResource("AnimationNodeStateMachineTransition_chlfp")]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ye2n2"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7u1t4"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"jump"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_avscj"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"run"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pkmju"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"sprint"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_l1yyq"]
+advance_mode = 2
+advance_condition = &"runjump"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yuw3k"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"run"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xe4kt"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"sprint"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xiyge"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"jump"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qaj4q"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"sprint"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_s0ej1"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dyj7w"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_q554i"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"run"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2te3t"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"runjump"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2gfl3"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"runjumpend"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_uerte"]
+xfade_time = 0.2
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_5778f"]
+states/Jump/node = SubResource("AnimationNodeStateMachine_f5cxl")
+states/Jump/position = Vector2(617.333, -3.33333)
+states/RunJump/node = SubResource("AnimationNodeStateMachine_t3j2f")
+states/RunJump/position = Vector2(588.333, 169.333)
+states/Running/node = SubResource("AnimationNodeStateMachine_mhu2s")
+states/Running/position = Vector2(350.451, 248.667)
+states/Sprint/node = SubResource("AnimationNodeStateMachine_y0smj")
+states/Sprint/position = Vector2(461.667, 104)
+states/Walk/node = SubResource("AnimationNodeStateMachine_2l2n4")
+states/Walk/position = Vector2(343.544, -85)
+transitions = ["Start", "Walk", SubResource("AnimationNodeStateMachineTransition_ye2n2"), "Walk", "Jump", SubResource("AnimationNodeStateMachineTransition_7u1t4"), "Walk", "Running", SubResource("AnimationNodeStateMachineTransition_avscj"), "Running", "Sprint", SubResource("AnimationNodeStateMachineTransition_pkmju"), "Sprint", "RunJump", SubResource("AnimationNodeStateMachineTransition_l1yyq"), "Start", "Running", SubResource("AnimationNodeStateMachineTransition_yuw3k"), "Start", "Sprint", SubResource("AnimationNodeStateMachineTransition_xe4kt"), "Start", "Jump", SubResource("AnimationNodeStateMachineTransition_xiyge"), "Walk", "Sprint", SubResource("AnimationNodeStateMachineTransition_qaj4q"), "Sprint", "Walk", SubResource("AnimationNodeStateMachineTransition_s0ej1"), "Running", "Walk", SubResource("AnimationNodeStateMachineTransition_dyj7w"), "Sprint", "Running", SubResource("AnimationNodeStateMachineTransition_q554i"), "Running", "RunJump", SubResource("AnimationNodeStateMachineTransition_2te3t"), "RunJump", "End", SubResource("AnimationNodeStateMachineTransition_2gfl3"), "Jump", "End", SubResource("AnimationNodeStateMachineTransition_uerte")]
+graph_offset = Vector2(-286, -145)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_a0jnu"]
+animation = &"Dying"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_anv1n"]
+animation = &"animations/ReceiveDamage3"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qs782"]
+advance_mode = 2
+advance_condition = &"damage3"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_knyc7"]
+states/animations_ReceiveDamage3/node = SubResource("AnimationNodeAnimation_anv1n")
+states/animations_ReceiveDamage3/position = Vector2(449.333, 101.111)
+transitions = ["Start", "animations_ReceiveDamage3", SubResource("AnimationNodeStateMachineTransition_qs782")]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_oj63x"]
+animation = &"animations/ReaceiveDamage2"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ahljp"]
+animation = &"animations/ReceiveDamage1"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cb48w"]
+animation = &"animations/ReceiveDamage4"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bljok"]
+animation = &"animations/ReceiveDamage5"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_iky8a"]
+animation = &"animations/ReceiveDamage6"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6g7fv"]
+animation = &"animations/ReceiveDamage7"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1pgua"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wgy82"]
+advance_mode = 2
+advance_condition = &"death"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_gkemj"]
+states/Dying/node = SubResource("AnimationNodeAnimation_a0jnu")
+states/Dying/position = Vector2(898.667, 101.556)
+states/End/position = Vector2(1033.33, 105.333)
+states/StateMachine/node = SubResource("AnimationNodeStateMachine_knyc7")
+states/StateMachine/position = Vector2(358.667, 103.185)
+states/animations_ReaceiveDamage2/node = SubResource("AnimationNodeAnimation_oj63x")
+states/animations_ReaceiveDamage2/position = Vector2(276, 216.667)
+states/animations_ReceiveDamage1/node = SubResource("AnimationNodeAnimation_ahljp")
+states/animations_ReceiveDamage1/position = Vector2(717.333, 178)
+states/animations_ReceiveDamage4/node = SubResource("AnimationNodeAnimation_cb48w")
+states/animations_ReceiveDamage4/position = Vector2(589.333, 9.11111)
+states/animations_ReceiveDamage5/node = SubResource("AnimationNodeAnimation_bljok")
+states/animations_ReceiveDamage5/position = Vector2(825.333, 9.55555)
+states/animations_ReceiveDamage6/node = SubResource("AnimationNodeAnimation_iky8a")
+states/animations_ReceiveDamage6/position = Vector2(602.667, 238)
+states/animations_ReceiveDamage7/node = SubResource("AnimationNodeAnimation_6g7fv")
+states/animations_ReceiveDamage7/position = Vector2(977.333, 216.667)
+transitions = ["Start", "StateMachine", SubResource("AnimationNodeStateMachineTransition_1pgua"), "StateMachine", "Dying", SubResource("AnimationNodeStateMachineTransition_wgy82")]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wj4jq"]
+animation = &"animations/HeavyPunch"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mxux8"]
+animation = &"animations/Hook"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_k3hv0"]
+animation = &"animations/ShortKick"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sgkix"]
+animation = &"animations/WideHook"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7adee"]
+animation = &"animations/WideKick"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_d7cia"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"shortkick"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yp5x2"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"hook"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_twpxc"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"widehook"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hc0ve"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"heavypunch"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_audqq"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"widekick"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7r1lr"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"widehook"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_u0ndu"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"heavypunch"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_x8iyn"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"shortkick"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_h6dip"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"widekick"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3ja6x"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"shortkick"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_88x4s"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"hook"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_y3nbi"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"hook"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_h7gtk"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"heavypunch"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ecj77"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"widekick"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_s7ohj"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"shortkick"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_re1ny"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"heavypunch"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tq2t6"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"hook"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cbhqj"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"heavypunch"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dbf8j"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"wodehook"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fx00n"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"widekick"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jvcx2"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"widehook"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sqjap"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"widekick"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_urnkd"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"hook"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_64tsc"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"shortkick"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_or12b"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"widehook"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_1tjvw"]
+states/Start/position = Vector2(-5.33363, 100)
+states/animations_HeavyPunch/node = SubResource("AnimationNodeAnimation_wj4jq")
+states/animations_HeavyPunch/position = Vector2(127.473, 252.222)
+states/animations_Hook/node = SubResource("AnimationNodeAnimation_mxux8")
+states/animations_Hook/position = Vector2(238.666, -47.3333)
+states/animations_ShortKick/node = SubResource("AnimationNodeAnimation_k3hv0")
+states/animations_ShortKick/position = Vector2(273.184, 123.037)
+states/animations_WideHook/node = SubResource("AnimationNodeAnimation_sgkix")
+states/animations_WideHook/position = Vector2(512.593, 43.5803)
+states/animations_WideKick/node = SubResource("AnimationNodeAnimation_7adee")
+states/animations_WideKick/position = Vector2(438.42, 286.445)
+transitions = ["Start", "animations_ShortKick", SubResource("AnimationNodeStateMachineTransition_d7cia"), "Start", "animations_Hook", SubResource("AnimationNodeStateMachineTransition_yp5x2"), "Start", "animations_WideHook", SubResource("AnimationNodeStateMachineTransition_twpxc"), "Start", "animations_HeavyPunch", SubResource("AnimationNodeStateMachineTransition_hc0ve"), "Start", "animations_WideKick", SubResource("AnimationNodeStateMachineTransition_audqq"), "animations_Hook", "animations_WideHook", SubResource("AnimationNodeStateMachineTransition_7r1lr"), "animations_WideHook", "animations_HeavyPunch", SubResource("AnimationNodeStateMachineTransition_u0ndu"), "animations_HeavyPunch", "animations_ShortKick", SubResource("AnimationNodeStateMachineTransition_x8iyn"), "animations_ShortKick", "animations_WideKick", SubResource("AnimationNodeStateMachineTransition_h6dip"), "animations_Hook", "animations_ShortKick", SubResource("AnimationNodeStateMachineTransition_3ja6x"), "animations_ShortKick", "animations_Hook", SubResource("AnimationNodeStateMachineTransition_88x4s"), "animations_WideHook", "animations_Hook", SubResource("AnimationNodeStateMachineTransition_y3nbi"), "animations_WideKick", "animations_HeavyPunch", SubResource("AnimationNodeStateMachineTransition_h7gtk"), "animations_HeavyPunch", "animations_WideKick", SubResource("AnimationNodeStateMachineTransition_ecj77"), "animations_WideKick", "animations_ShortKick", SubResource("AnimationNodeStateMachineTransition_s7ohj"), "animations_ShortKick", "animations_HeavyPunch", SubResource("AnimationNodeStateMachineTransition_re1ny"), "animations_HeavyPunch", "animations_Hook", SubResource("AnimationNodeStateMachineTransition_tq2t6"), "animations_Hook", "animations_HeavyPunch", SubResource("AnimationNodeStateMachineTransition_cbhqj"), "animations_HeavyPunch", "animations_WideHook", SubResource("AnimationNodeStateMachineTransition_dbf8j"), "animations_WideHook", "animations_WideKick", SubResource("AnimationNodeStateMachineTransition_fx00n"), "animations_WideKick", "animations_WideHook", SubResource("AnimationNodeStateMachineTransition_jvcx2"), "animations_Hook", "animations_WideKick", SubResource("AnimationNodeStateMachineTransition_sqjap"), "animations_WideKick", "animations_Hook", SubResource("AnimationNodeStateMachineTransition_urnkd"), "animations_WideHook", "animations_ShortKick", SubResource("AnimationNodeStateMachineTransition_64tsc"), "animations_ShortKick", "animations_WideHook", SubResource("AnimationNodeStateMachineTransition_or12b")]
+graph_offset = Vector2(-240, -142)
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bgput"]
+xfade_time = 0.1
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_156pw"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"crouch"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_uira7"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bue5a"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"locomotion"
+advance_expression = "
+"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2f5sc"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"crouchwalk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jrk5j"]
+xfade_time = 0.3
+advance_mode = 2
+advance_condition = &"idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hu0j1"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"fall"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tblll"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_oax6y"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"attack"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_r17mu"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6rxh6"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"backtocrouch"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kmo7h"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"fall"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_iggb5"]
+advance_mode = 2
+advance_condition = &"fall"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ntat1"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"attack"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3ybls"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"locomotion"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xrwh2"]
+advance_mode = 2
+advance_condition = &"locomotion"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kdbux"]
+xfade_time = 0.3
+advance_mode = 2
+advance_condition = &"damage"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nwx7q"]
+xfade_time = 0.3
+advance_mode = 2
+advance_condition = &"damage"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_asifd"]
+xfade_time = 0.3
+advance_mode = 2
+advance_condition = &"damage"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_th5kj"]
+xfade_time = 0.3
+advance_mode = 2
+advance_condition = &"damage"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ttf5q"]
+xfade_time = 0.3
+advance_mode = 2
+advance_condition = &"damage"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_b7ll1"]
+xfade_time = 0.3
+advance_mode = 2
+advance_condition = &"damage"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qr8ls"]
+xfade_time = 0.3
+advance_mode = 2
+advance_condition = &"idle"
+
+[resource]
+states/CrouchIdle/node = SubResource("AnimationNodeStateMachine_bbjng")
+states/CrouchIdle/position = Vector2(556, 101.309)
+states/CrouchWalk/node = SubResource("AnimationNodeStateMachine_jy338")
+states/CrouchWalk/position = Vector2(555.951, -12.2839)
+states/Falling/node = SubResource("AnimationNodeStateMachine_r5n52")
+states/Falling/position = Vector2(35.8148, -90.0864)
+states/Idle/node = SubResource("AnimationNodeStateMachine_dcelk")
+states/Idle/position = Vector2(234.261, 104.087)
+states/Locomotion/node = SubResource("AnimationNodeStateMachine_5778f")
+states/Locomotion/position = Vector2(317.037, -89)
+states/Start/position = Vector2(-74.667, 101.525)
+states/TakeDamage/node = SubResource("AnimationNodeStateMachine_gkemj")
+states/TakeDamage/position = Vector2(530.333, 282.963)
+states/UnarmedAttack/node = SubResource("AnimationNodeStateMachine_1tjvw")
+states/UnarmedAttack/position = Vector2(321.938, 283)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_bgput"), "Idle", "CrouchIdle", SubResource("AnimationNodeStateMachineTransition_156pw"), "CrouchIdle", "Idle", SubResource("AnimationNodeStateMachineTransition_uira7"), "Idle", "Locomotion", SubResource("AnimationNodeStateMachineTransition_bue5a"), "CrouchIdle", "CrouchWalk", SubResource("AnimationNodeStateMachineTransition_2f5sc"), "Locomotion", "Idle", SubResource("AnimationNodeStateMachineTransition_jrk5j"), "Locomotion", "Falling", SubResource("AnimationNodeStateMachineTransition_hu0j1"), "Falling", "Idle", SubResource("AnimationNodeStateMachineTransition_tblll"), "Idle", "UnarmedAttack", SubResource("AnimationNodeStateMachineTransition_oax6y"), "UnarmedAttack", "Idle", SubResource("AnimationNodeStateMachineTransition_r17mu"), "CrouchWalk", "CrouchIdle", SubResource("AnimationNodeStateMachineTransition_6rxh6"), "CrouchWalk", "Falling", SubResource("AnimationNodeStateMachineTransition_kmo7h"), "Idle", "Falling", SubResource("AnimationNodeStateMachineTransition_iggb5"), "Locomotion", "UnarmedAttack", SubResource("AnimationNodeStateMachineTransition_ntat1"), "UnarmedAttack", "Locomotion", SubResource("AnimationNodeStateMachineTransition_3ybls"), "Falling", "Locomotion", SubResource("AnimationNodeStateMachineTransition_xrwh2"), "UnarmedAttack", "TakeDamage", SubResource("AnimationNodeStateMachineTransition_kdbux"), "Idle", "TakeDamage", SubResource("AnimationNodeStateMachineTransition_nwx7q"), "CrouchIdle", "TakeDamage", SubResource("AnimationNodeStateMachineTransition_asifd"), "Locomotion", "TakeDamage", SubResource("AnimationNodeStateMachineTransition_th5kj"), "Falling", "TakeDamage", SubResource("AnimationNodeStateMachineTransition_ttf5q"), "CrouchWalk", "TakeDamage", SubResource("AnimationNodeStateMachineTransition_b7ll1"), "TakeDamage", "Idle", SubResource("AnimationNodeStateMachineTransition_qr8ls")]
+graph_offset = Vector2(-137, -26)

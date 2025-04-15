@@ -1,0 +1,54 @@
+[gd_scene load_steps=14 format=3 uid="uid://bhasl68mmnvjl"]
+
+[ext_resource type="Script" uid="uid://her0s5b504de" path="res://fsm/state_mchine.gd" id="1_qud5w"]
+[ext_resource type="Script" uid="uid://c7ceo345h44vo" path="res://fsm/player/movement/player_idle.gd" id="2_k3p8x"]
+[ext_resource type="Resource" uid="uid://bi8jtl76ivrfc" path="res://fsm/player/player_stats.tres" id="3_xwssa"]
+[ext_resource type="Script" uid="uid://d5kmpt7f8uay" path="res://fsm/player/movement/player_run.gd" id="5_3xubr"]
+[ext_resource type="Script" uid="uid://dx0khl5ufb6ac" path="res://fsm/player/crouch/player_crouch.gd" id="6_msn5l"]
+[ext_resource type="Script" uid="uid://sf53sstb0wtt" path="res://fsm/player/crouch/player_crouchwalk.gd" id="7_irub4"]
+[ext_resource type="Script" uid="uid://bvx437vslwjil" path="res://fsm/player/movement/player_jump.gd" id="8_ne1vg"]
+[ext_resource type="Script" uid="uid://dv2xt7qnistx3" path="res://fsm/player/attack/player_attack.gd" id="9_bcdjf"]
+[ext_resource type="Script" uid="uid://dsrhqyu2hu4v6" path="res://fsm/player/movement/player_falling.gd" id="9_cubbb"]
+[ext_resource type="Script" uid="uid://v8nf48rtim6x" path="res://fsm/player/movement/player_ledge_hold.gd" id="9_xo0h4"]
+[ext_resource type="Script" uid="uid://bnt8klbhbr4qe" path="res://fsm/player/movement/player_sprint.gd" id="10_mx486"]
+[ext_resource type="Script" uid="uid://dvsiatjw1dngu" path="res://fsm/player/death/player_death.gd" id="18_3smlr"]
+[ext_resource type="Script" uid="uid://bkkcxairiyyu" path="res://fsm/player/take_damage/take_damage.gd" id="19_1i1b0"]
+
+[node name="StateMachine" type="Node" node_paths=PackedStringArray("initial_state")]
+script = ExtResource("1_qud5w")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="."]
+script = ExtResource("2_k3p8x")
+
+[node name="Running" type="Node" parent="."]
+script = ExtResource("5_3xubr")
+
+[node name="Jump" type="Node" parent="."]
+script = ExtResource("8_ne1vg")
+
+[node name="Sprint" type="Node" parent="."]
+script = ExtResource("10_mx486")
+
+[node name="Falling" type="Node" parent="."]
+script = ExtResource("9_cubbb")
+
+[node name="LedgeHold" type="Node" parent="."]
+script = ExtResource("9_xo0h4")
+
+[node name="Crouch" type="Node" parent="." node_paths=PackedStringArray("fsm")]
+script = ExtResource("6_msn5l")
+fsm = NodePath("..")
+
+[node name="CrouchWalk" type="Node" parent="Crouch"]
+script = ExtResource("7_irub4")
+
+[node name="Attack" type="Node" parent="."]
+script = ExtResource("9_bcdjf")
+
+[node name="Death" type="Node" parent="."]
+script = ExtResource("18_3smlr")
+
+[node name="Damage" type="Node" parent="."]
+script = ExtResource("19_1i1b0")
+player_stats = ExtResource("3_xwssa")

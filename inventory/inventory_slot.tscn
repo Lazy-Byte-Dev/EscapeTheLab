@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://dwsgwje5btkcm"]
+
+[ext_resource type="Script" uid="uid://dtmqen74mw6xi" path="res://inventory/inventory_slot.gd" id="1_6gd3n"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x5n1i"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cpxn3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gs76y"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qarc3"]
+bg_color = Color(0.400657, 0.61377, 0.484995, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[node name="InventorySlot" type="Button" node_paths=PackedStringArray("EquipmentHighlight", "IconSlot")]
+custom_minimum_size = Vector2(60, 60)
+offset_right = 60.0
+offset_bottom = 60.0
+size_flags_horizontal = 0
+theme_override_styles/hover = SubResource("StyleBoxFlat_x5n1i")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cpxn3")
+theme_override_styles/normal = SubResource("StyleBoxFlat_gs76y")
+script = ExtResource("1_6gd3n")
+EquipmentHighlight = NodePath("EquipmentHighlight")
+IconSlot = NodePath("TextureRect")
+
+[node name="EquipmentHighlight" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qarc3")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1

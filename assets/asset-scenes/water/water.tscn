@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cs1bvfon77u5c"]
+
+[ext_resource type="Shader" uid="uid://nynxdqxt1qnt" path="res://assets/asset-scenes/water/water.tres" id="1_hygla"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_5btx8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hygla"]
+render_priority = 0
+shader = ExtResource("1_hygla")
+shader_parameter/ColorParameter = Color(0, 0.266667, 0.533333, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4sq1b"]
+size = Vector3(37.9579, 13.5575, 16.1334)
+
+[node name="Water" type="StaticBody3D"]
+collision_layer = 32
+collision_mask = 0
+
+[node name="WaterPlane" type="MeshInstance3D" parent="."]
+transform = Transform3D(19.931, 0, 0, 0, 1, 0, 0, 0, 8.81671, 0, 0, 0)
+mesh = SubResource("PlaneMesh_5btx8")
+surface_material_override/0 = SubResource("ShaderMaterial_hygla")
+
+[node name="WaterCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.6055, 0)
+shape = SubResource("BoxShape3D_4sq1b")
+debug_color = Color(0, 0.595, 0.7, 1)

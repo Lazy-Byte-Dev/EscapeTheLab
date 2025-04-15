@@ -1,0 +1,203 @@
+[gd_scene load_steps=18 format=3 uid="uid://caun3oc3wgcil"]
+
+[ext_resource type="PackedScene" uid="uid://b6gle7nwge0v" path="res://scenes/player/player.tscn" id="2_42von"]
+[ext_resource type="PackedScene" uid="uid://cs1bvfon77u5c" path="res://assets/asset-scenes/water/water.tscn" id="5_qh7w4"]
+[ext_resource type="PackedScene" uid="uid://cy2bnxx4jasx3" path="res://assets/asset-scenes/interactable_test_cube.tscn" id="6_nmnmc"]
+[ext_resource type="PackedScene" uid="uid://crx8qk1awcqn7" path="res://assets/asset-scenes/test_sphere.tscn" id="7_a3rol"]
+[ext_resource type="PackedScene" uid="uid://5k3nbe6wwu73" path="res://assets/asset-scenes/sword.tscn" id="8_ih1h8"]
+[ext_resource type="Texture2D" uid="uid://c5cyb5wn3lj5l" path="res://assets/game_assets/textures/texture_07.png" id="8_r5yp6"]
+[ext_resource type="Texture2D" uid="uid://buolqkg0igmi1" path="res://assets/game_assets/textures/texture_06.png" id="8_sd6ss"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_w5a72"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_2uiwk"]
+sky_material = SubResource("ProceduralSkyMaterial_w5a72")
+
+[sub_resource type="Environment" id="Environment_drfag"]
+background_mode = 2
+sky = SubResource("Sky_2uiwk")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_muoal"]
+albedo_texture = ExtResource("8_sd6ss")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ilcfm"]
+albedo_texture = ExtResource("8_r5yp6")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2wkfl"]
+albedo_texture = ExtResource("8_sd6ss")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wqauh"]
+albedo_texture = ExtResource("8_sd6ss")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rfsxo"]
+albedo_texture = ExtResource("8_sd6ss")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pd0dg"]
+albedo_texture = ExtResource("8_sd6ss")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yp1fk"]
+albedo_texture = ExtResource("8_sd6ss")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[node name="MainGame" type="Node3D"]
+
+[node name="Env" type="Node3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Env"]
+transform = Transform3D(-0.847076, 0.460268, -0.265736, -0.444514, -0.339487, 0.828949, 0.291325, 0.820306, 0.492167, 0, 9.73131, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Env"]
+environment = SubResource("Environment_drfag")
+
+[node name="Player" parent="." instance=ExtResource("2_42von")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.332, 0.347992, 14.8917)
+
+[node name="Level" type="Node3D" parent="."]
+
+[node name="Level" type="Node" parent="Level"]
+
+[node name="Floor" type="CSGBox3D" parent="Level/Level"]
+transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 100, 0.253296, -2.75867, -1.61896)
+material_override = SubResource("StandardMaterial3D_muoal")
+use_collision = true
+size = Vector3(1, 22.811, 1)
+material = SubResource("StandardMaterial3D_ilcfm")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Level/Level/Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.33969, 0)
+material_override = SubResource("StandardMaterial3D_muoal")
+operation = 2
+use_collision = true
+size = Vector3(0.956055, 12.737, 0.963135)
+material = SubResource("StandardMaterial3D_ilcfm")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Level/Level/Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.283112, 4.21095, 0.399231)
+material_override = SubResource("StandardMaterial3D_muoal")
+operation = 2
+use_collision = true
+size = Vector3(0.389832, 22.9945, 0.164673)
+material = SubResource("StandardMaterial3D_ilcfm")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="Level/Level/Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.219428, 4.21095, 0.399231)
+material_override = SubResource("StandardMaterial3D_muoal")
+operation = 2
+use_collision = true
+size = Vector3(0.389832, 22.9945, 0.164673)
+material = SubResource("StandardMaterial3D_ilcfm")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Level/Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.97169, 2.09625, -4.58049)
+use_collision = true
+size = Vector3(1, 5.1925, 1)
+material = SubResource("StandardMaterial3D_2wkfl")
+
+[node name="Legde" type="CSGBox3D" parent="Level/Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.7256, 1.96723, -49.7587)
+use_collision = true
+size = Vector3(9.10303, 0.982969, 0.34668)
+material = SubResource("StandardMaterial3D_2wkfl")
+
+[node name="Legde2" type="CSGBox3D" parent="Level/Level/Legde"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.4956, 1.27203, 0)
+use_collision = true
+size = Vector3(9.10303, 0.982969, 0.34668)
+material = SubResource("StandardMaterial3D_2wkfl")
+
+[node name="Legde3" type="CSGBox3D" parent="Level/Level/Legde"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.1241, 2.38846, 0)
+use_collision = true
+size = Vector3(9.10303, 0.982969, 0.34668)
+material = SubResource("StandardMaterial3D_2wkfl")
+
+[node name="Legde4" type="CSGBox3D" parent="Level/Level/Legde"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5872, 3.60706, 0)
+use_collision = true
+size = Vector3(9.10303, 0.982969, 0.34668)
+material = SubResource("StandardMaterial3D_2wkfl")
+
+[node name="Legde5" type="CSGBox3D" parent="Level/Level/Legde"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.5704, 4.86591, 0)
+use_collision = true
+size = Vector3(9.10303, 0.982969, 0.34668)
+material = SubResource("StandardMaterial3D_2wkfl")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Level/Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.3278, 1.87888, 4.0507)
+use_collision = true
+size = Vector3(6.82373, 4.75775, 1)
+material = SubResource("StandardMaterial3D_wqauh")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Level/Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7248, 0.620239, 0.249964)
+use_collision = true
+size = Vector3(2.88477, 2.24048, 6.77393)
+material = SubResource("StandardMaterial3D_rfsxo")
+
+[node name="Arena" type="CSGBox3D" parent="Level/Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.9968, 1.229, -35.1291)
+use_collision = true
+size = Vector3(54.959, 3.5, 31)
+material = SubResource("StandardMaterial3D_rfsxo")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Level/Level/Arena"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.637695, 0)
+operation = 2
+use_collision = true
+size = Vector3(44.9219, 4.7334, 30.29)
+material = SubResource("StandardMaterial3D_rfsxo")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Level/Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.9908, 0.874786, -1.96178)
+use_collision = true
+size = Vector3(1, 2.74957, 1.5791)
+material = SubResource("StandardMaterial3D_pd0dg")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Level/Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.7576, 0.449399, -2.60596)
+use_collision = true
+size = Vector3(4.78174, 1.37, 6.21191)
+material = SubResource("StandardMaterial3D_yp1fk")
+
+[node name="Items" type="Node" parent="."]
+
+[node name="InteractableTestCube3" parent="Items" instance=ExtResource("6_nmnmc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.12219, 13.2079, 0)
+
+[node name="InteractableTestCube4" parent="Items" instance=ExtResource("6_nmnmc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.17957, 13.1465, 0)
+
+[node name="InteractableTestCube5" parent="Items" instance=ExtResource("6_nmnmc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.6591, 0)
+
+[node name="TestSphere6" parent="Items" instance=ExtResource("7_a3rol")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.67193, 3, 0)
+
+[node name="TestSphere7" parent="Items" instance=ExtResource("7_a3rol")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.23073, 4.98123, 0)
+
+[node name="TestSphere8" parent="Items" instance=ExtResource("7_a3rol")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25841, 6.61858, 0)
+
+[node name="Sword" parent="Items" instance=ExtResource("8_ih1h8")]
+transform = Transform3D(1, 0, 0, 0, 0.0194242, -0.999811, 0, 0.999811, 0.0194242, 0, 8.20364, 9.90214)
+
+[node name="Water2" parent="." instance=ExtResource("5_qh7w4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.2544, -0.524165, 38.3641)

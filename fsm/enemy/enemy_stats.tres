@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=2 format=3 uid="uid://5ee82xi85h3d"]
+
+[ext_resource type="Script" uid="uid://cuxeka2j1f1ui" path="res://fsm/stats.gd" id="1_04hpv"]
+
+[resource]
+script = ExtResource("1_04hpv")
+is_dead = false
+name = ""
+title = ""
+rank = ""
+_class = ""
+level = 1
+experience = 0
+experience_to_next_level = 100
+exp_gained = 50
+strength = 5
+dexterity = 10
+intelligence = 10
+constitution = 10
+charisma = 10
+wisdom = 10
+health = 100
+max_health = 100
+mana = 50
+max_mana = 50
+stamina = 50
+max_stamina = 50
+attack_power = 10
+defense = 5
+magic_power = 5
+magic_resistance = 5
+critical_chance = 0.05
+critical_damage_multiplier = 1.5
+gold = 0
+inventory = []

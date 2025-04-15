@@ -1,0 +1,64 @@
+[gd_scene load_steps=10 format=3 uid="uid://d07e4pssp3e0d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mspqy"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="Resource" id="Resource_ycgvf"]
+metadata/__load_path__ = "res://assets/Big/O.png"
+
+[sub_resource type="Resource" id="Resource_d4qqn"]
+metadata/__load_path__ = "res://assets/Big/O_Pressed.png"
+
+[sub_resource type="Resource" id="Resource_jevrb"]
+metadata/__load_path__ = "res://assets/Big/S.png"
+
+[sub_resource type="Resource" id="Resource_8u008"]
+metadata/__load_path__ = "res://assets/Big/S_Pressed.png"
+
+[sub_resource type="Resource" id="Resource_intu4"]
+metadata/__load_path__ = "res://assets/Big/T.png"
+
+[sub_resource type="Resource" id="Resource_2lg53"]
+metadata/__load_path__ = "res://assets/Big/T_Pressed.png"
+
+[sub_resource type="Resource" id="Resource_c7p0k"]
+metadata/__load_path__ = "res://assets/Big/X.png"
+
+[sub_resource type="Resource" id="Resource_x7qou"]
+metadata/__load_path__ = "res://assets/Big/X_Pressed.png"
+
+[node name="Buttons" type="PanelContainer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -427.0
+offset_top = -325.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_mspqy")
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+position = Vector2(282, 105)
+scale = Vector2(5, 5)
+texture_normal = SubResource("Resource_ycgvf")
+texture_pressed = SubResource("Resource_d4qqn")
+
+[node name="TouchScreenButton2" type="TouchScreenButton" parent="."]
+position = Vector2(80, 105)
+scale = Vector2(5, 5)
+texture_normal = SubResource("Resource_jevrb")
+texture_pressed = SubResource("Resource_8u008")
+
+[node name="TouchScreenButton3" type="TouchScreenButton" parent="."]
+position = Vector2(183, 10)
+scale = Vector2(5, 5)
+texture_normal = SubResource("Resource_intu4")
+texture_pressed = SubResource("Resource_2lg53")
+
+[node name="TouchScreenButton4" type="TouchScreenButton" parent="."]
+position = Vector2(183, 209)
+scale = Vector2(5, 5)
+texture_normal = SubResource("Resource_c7p0k")
+texture_pressed = SubResource("Resource_x7qou")
